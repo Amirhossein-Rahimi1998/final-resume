@@ -3,6 +3,7 @@ export const navItems = [
   { name: "Projects", link: "#projects" },
   { name: "Testimonials", link: "#testimonials" },
   { name: "Contact", link: "#contact" },
+  { name: "Intro", link: "/introduction-projects" },
 ];
 
 export const gridItems = [
@@ -213,5 +214,42 @@ export const socialMedia = [
   {
     id: 3,
     img: "/link.svg",
+  },
+];
+
+// Links for Sidebar
+import React from "react";
+import { FaArrowLeft, FaUser } from "react-icons/fa6";
+import { RiDashboard2Fill } from "react-icons/ri";
+import { IoSettingsOutline } from "react-icons/io5";
+
+export const links = [
+  {
+    label: "Dashboard",
+    href: "#",
+    icon: React.createElement(RiDashboard2Fill, {
+      className: "h-7 w-fit shrink-0 text-neutral-700 dark:text-neutral-200",
+    }),
+  },
+  {
+    label: "Profile",
+    href: "#",
+    icon: React.createElement(FaUser, {
+      className: "h-7 w-fit shrink-0 text-neutral-700 dark:text-neutral-200",
+    }),
+  },
+  {
+    label: "Settings",
+    href: "#",
+    icon: React.createElement(IoSettingsOutline, {
+      className: "h-7 w-fit shrink-0 text-neutral-700 dark:text-neutral-200",
+    }),
+  },
+  {
+    label: "Logout",
+    href: "#",
+    icon: React.createElement(FaArrowLeft, {
+      className: "h-7 w-fit shrink-0 text-neutral-700 dark:text-neutral-200",
+    }),
   },
 ];
