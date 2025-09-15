@@ -1,5 +1,5 @@
 import React from 'react'
-import { SidebarDemo } from './(components)/sidebar/Sidebar';
+import { SidebarDemo } from '../../components/sidebar/Sidebar';
 
 const Intro = () => {
     return (
