@@ -10,6 +10,7 @@ export const config = {
     "/(api|trpc)(.*)",
   ],
 };
+<<<<<<< HEAD
 ////////////////
 // middleware.ts
 // import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
@@ -39,3 +40,5 @@ export const config = {
 //     '/(api|trpc)(.*)',
 //   ],
 // };
+=======
+>>>>>>> fea486972289d6cdbbbc32902972655deddd945e

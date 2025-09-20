@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+<<<<<<< HEAD
 /* shadcn setting { */
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
@@ -128,6 +129,11 @@
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
+=======
+@theme inline {
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+>>>>>>> fea486972289d6cdbbbc32902972655deddd945e
 
   @keyframes scroll {
     to {

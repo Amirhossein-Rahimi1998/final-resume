@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -32,3 +33,12 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+=======
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+>>>>>>> fea486972289d6cdbbbc32902972655deddd945e
