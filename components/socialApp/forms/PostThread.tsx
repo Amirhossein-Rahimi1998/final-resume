@@ -13,9 +13,9 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/components/ui/social-app-ui/form";
+import { Button } from "@/components/ui/social-app-ui/button";
+import { Textarea } from "@/components/ui/social-app-ui/textarea";
 
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";

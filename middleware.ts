@@ -1,44 +1,16 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+// Resource: https://clerk.com/docs/nextjs/middleware#auth-middleware
+// Copy the middleware code as it is from the above resource
 
-export default clerkMiddleware();
+import { authMiddleware } from "@clerk/nextjs";
+
+export default authMiddleware({
+  // An array of public routes that don't require authentication.
+  publicRoutes: ["/api/webhook/clerk"],
+
+  // An array of routes to be ignored by the authentication middleware.
+  ignoredRoutes: ["/api/webhook/clerk"],
+});
 
 export const config = {
-  matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
-    "/(api|trpc)(.*)",
-  ],
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
-<<<<<<< HEAD
-////////////////
-// middleware.ts
-// import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-// import { NextRequest, NextResponse } from 'next/server';
-
-// const isPublicRoute = createRouteMatcher([
-//   '/',
-//   '/api/webhook/clerk',
-// ]);
-
-// export default clerkMiddleware((auth, req: NextRequest) => {
-//   if (isPublicRoute(req)) {
-//     return NextResponse.next();
-//   }
-
-//   return auth().then(({ isAuthenticated, redirectToSignIn }) => {
-//     if (!isAuthenticated) {
-//       return redirectToSignIn({ returnBackUrl: req.url });
-//     }
-//     return NextResponse.next();
-//   });
-// });
-
-// export const config = {
-//   matcher: [
-//     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-//     '/(api|trpc)(.*)',
-//   ],
-// };
-=======
->>>>>>> fea486972289d6cdbbbc32902972655deddd945e

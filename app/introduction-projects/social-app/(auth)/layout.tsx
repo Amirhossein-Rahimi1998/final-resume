@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-// import { dark } from "@clerk/themes";
+import { dark } from "@clerk/themes";
 
-// import "../globals.css";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +20,9 @@ export default function RootLayout({
 }) {
     return (
         <ClerkProvider
-            // appearance={{
-            //     baseTheme: dark,
-            // }}
+            appearance={{
+                baseTheme: dark,
+            }}
         >
             <html lang='en'>
                 <body className={`${inter.className} bg-dark-1`}>{children}</body>
@@ -31,23 +30,3 @@ export default function RootLayout({
         </ClerkProvider>
     );
 }
-=======
-import Loader from '@/components/socialApp/Loader'
-import { ClerkLoaded, ClerkLoading, ClerkProvider } from '@clerk/nextjs'
-import React from 'react'
-
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <ClerkProvider>
-            <section>
-                <ClerkLoading>
-                    <Loader />
-                </ClerkLoading>
-                <ClerkLoaded>
-                    {children}
-                </ClerkLoaded>
-            </section>
-        </ClerkProvider>
-    )
-}
->>>>>>> fea486972289d6cdbbbc32902972655deddd945e
