@@ -12,10 +12,10 @@ import {
     FormField,
     FormItem,
     FormLabel,
-} from "@/components/ui/form";
+} from "@/components/ui/social-app-ui/form";
 
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "@/components/ui/social-app-ui/input";
+import { Button } from "@/components/ui/social-app-ui/button";
 
 import { CommentValidation } from "@/lib/validations/thread";
 import { addCommentToThread } from "@/lib/actions/thread.actions";

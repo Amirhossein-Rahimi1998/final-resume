@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs";
 
-import UserCard from "@/components/cards/UserCard";
-import Searchbar from "@/components/shared/Searchbar";
-import Pagination from "@/components/shared/Pagination";
+import UserCard from "@/components/socialApp/cards/UserCard";
+import Searchbar from "@/components/socialApp/shared/Searchbar";
+import Pagination from "@/components/socialApp/shared/Pagination";
 
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 

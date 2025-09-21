@@ -4,9 +4,10 @@ import { redirect } from "next/navigation";
 
 import { profileTabs } from "@/constants";
 
-import ThreadsTab from "@/components/shared/ThreadsTab";
-import ProfileHeader from "@/components/shared/ProfileHeader";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ThreadsTab from "@/components/socialApp/shared/ThreadsTab";
+import ProfileHeader from "@/components/socialApp/shared/ProfileHeader";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/social-app-ui/tabs";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 
