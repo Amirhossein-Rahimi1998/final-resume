@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+// const nextConfig = {
+const nextConfig: import("next").NextConfig = {
   experimental: {
-    serverActions: true,
-    serverComponentsExternalPackages: ["mongoose"],
+    serverActions: {},
   },
+  serverExternalPackages: ["mongoose"],
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
