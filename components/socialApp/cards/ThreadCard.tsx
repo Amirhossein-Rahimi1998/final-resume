@@ -56,7 +56,7 @@ function ThreadCard({
                             />
                         </Link>
 
-                        <div className='thread-card_bar' />
+                        <div className='relative mt-2 w-0.5 grow rounded-full bg-neutral-800' />
                     </div>
 
                     <div className='flex w-full flex-col'>
@@ -71,7 +71,7 @@ function ThreadCard({
                         <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
                             <div className='flex gap-3.5'>
                                 <Image
-                                    src='/assets/heart-gray.svg'
+                                    src='/threads_assets/heart-gray.svg'
                                     alt='heart'
                                     width={24}
                                     height={24}
@@ -79,7 +79,7 @@ function ThreadCard({
                                 />
                                 <Link href={`/thread/${id}`}>
                                     <Image
-                                        src='/assets/reply.svg'
+                                        src='/threads_assets/reply.svg'
                                         alt='heart'
                                         width={24}
                                         height={24}
@@ -87,14 +87,14 @@ function ThreadCard({
                                     />
                                 </Link>
                                 <Image
-                                    src='/assets/repost.svg'
+                                    src='/threads_assets/repost.svg'
                                     alt='heart'
                                     width={24}
                                     height={24}
                                     className='cursor-pointer object-contain'
                                 />
                                 <Image
-                                    src='/assets/share.svg'
+                                    src='/threads_assets/share.svg'
                                     alt='heart'
                                     width={24}
                                     height={24}

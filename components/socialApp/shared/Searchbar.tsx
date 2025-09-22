@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/social-app-ui/input";
 
 interface Props {
     routeType: string;
@@ -28,9 +28,9 @@ function Searchbar({ routeType }: Props) {
     }, [search, routeType]);
 
     return (
-        <div className='searchbar'>
+        <div className='flex gap-1 rounded-lg bg-dark-3 px-4 py-2'>
             <Image
-                src='/assets/search-gray.svg'
+                src='/threads_assets/search-gray.svg'
                 alt='search'
                 width={24}
                 height={24}
@@ -42,7 +42,7 @@ function Searchbar({ routeType }: Props) {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={`${routeType !== "/search" ? "Search communities" : "Search creators"
                     }`}
-                className='no-focus searchbar_input'
+                className='border-none bg-dark-3 text-base-regular text-light-4 outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0'
             />
         </div>
     );

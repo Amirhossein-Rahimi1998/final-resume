@@ -49,7 +49,7 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
 
     return (
         <Form {...form}>
-            <form className='comment-form' onSubmit={form.handleSubmit(onSubmit)}>
+            <form className='mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs:flex-col' onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                     control={form.control}
                     name='thread'
@@ -69,14 +69,14 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
                                     type='text'
                                     {...field}
                                     placeholder='Comment...'
-                                    className='no-focus text-light-1 outline-none'
+                                    className='focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 text-light-1 outline-none'
                                 />
                             </FormControl>
                         </FormItem>
                     )}
                 />
 
-                <Button type='submit' className='comment-form_btn'>
+                <Button type='submit' className='rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full'>
                     Reply
                 </Button>
             </form>

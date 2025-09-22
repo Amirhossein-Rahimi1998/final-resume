@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
-import "../globals.css";
 import LeftSidebar from "@/components/socialApp/shared/LeftSidebar";
 import Bottombar from "@/components/socialApp/shared/Bottombar";
 import RightSidebar from "@/components/socialApp/shared/RightSidebar";
@@ -34,7 +33,7 @@ export default function RootLayout({
 
           <main className='flex flex-row'>
             <LeftSidebar />
-            <section className='main-container'>
+            <section className='flex min-h-screen flex-1 flex-col items-center bg-dark-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10'>
               <div className='w-full max-w-4xl'>{children}</div>
             </section>
             {/* @ts-ignore */}

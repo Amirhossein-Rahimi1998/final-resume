@@ -5,9 +5,9 @@ import Link from "next/link";
 
 function Topbar() {
     return (
-        <nav className='topbar'>
+        <nav className='fixed top-0 z-30 flex w-full items-center justify-between bg-dark-2 px-6 py-3'>
             <Link href='/' className='flex items-center gap-4'>
-                <Image src='/logo.svg' alt='logo' width={28} height={28} />
+                 <Image src='/threads_assets/logo.svg' alt='logo' width={28} height={28} />
                 <p className='text-heading3-bold text-light-1 max-xs:hidden'>Threads</p>
             </Link>
 
@@ -16,8 +16,8 @@ function Topbar() {
                     <SignedIn>
                         <SignOutButton>
                             <div className='flex cursor-pointer'>
-                                <Image
-                                    src='/assets/logout.svg'
+                                    <Image
+                                        src='/threads_assets/logout.svg'
                                     alt='logout'
                                     width={24}
                                     height={24}

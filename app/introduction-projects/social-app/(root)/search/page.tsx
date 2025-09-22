@@ -27,13 +27,13 @@ async function Page({
 
     return (
         <section>
-            <h1 className='head-text mb-10'>Search</h1>
+            <h1 className='text-heading2-bold text-light-1 mb-10'>Search</h1>
 
             <Searchbar routeType='search' />
 
             <div className='mt-14 flex flex-col gap-9'>
                 {result.users.length === 0 ? (
-                    <p className='no-result'>No Result</p>
+                    <p className='flex items-center gap-2 rounded-md bg-dark-2 px-7 py-4'>No Result</p>
                 ) : (
                     <>
                         {result.users.map((person) => (

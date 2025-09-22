@@ -44,7 +44,7 @@ function ProfileHeader({
                     <Link href='/profile/edit'>
                         <div className='flex cursor-pointer gap-3 rounded-lg bg-dark-3 px-4 py-2'>
                             <Image
-                                src='/assets/edit.svg'
+                                src='/threads_assets/edit.svg'
                                 alt='logout'
                                 width={16}
                                 height={16}
