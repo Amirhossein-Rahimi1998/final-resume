@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
 // import "../globals.css";
@@ -24,8 +24,26 @@ export default function RootLayout({
                 baseTheme: dark,
             }}
         >
-            <html lang='en'>
+            {/* <html lang='en'>
                 <body className={`${inter.className} bg-dark-1`}>{children}</body>
+            </html> */}
+            <html lang="en">
+                <body className={`${inter.className} antialiased`}>
+                    <header className="flex justify-end items-center p-4 gap-4 h-16">
+                        <SignedOut>
+                            <SignInButton />
+                            <SignUpButton>
+                                <button className="bg-[#6c47ff] text-ceramic-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                                    Sign Up
+                                </button>
+                            </SignUpButton>
+                        </SignedOut>
+                        <SignedIn>
+                            <UserButton />
+                        </SignedIn>
+                    </header>
+                    {children}
+                </body>
             </html>
         </ClerkProvider>
     );

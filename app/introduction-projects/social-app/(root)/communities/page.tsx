@@ -1,9 +1,9 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import Searchbar from "@/components/shared/Searchbar";
-import Pagination from "@/components/shared/Pagination";
-import CommunityCard from "@/components/cards/CommunityCard";
+import Searchbar from "@/components/socialApp/shared/Searchbar";
+import Pagination from "@/components/socialApp/shared/Pagination";
+import CommunityCard from "@/components/socialApp/cards/CommunityCards";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchCommunities } from "@/lib/actions/community.actions";
