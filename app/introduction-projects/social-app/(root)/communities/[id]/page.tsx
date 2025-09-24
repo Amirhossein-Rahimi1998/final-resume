@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
 import { communityTabs } from "@/constants";
 
-import UserCard from "@/components/cards/UserCard";
-import ThreadsTab from "@/components/shared/ThreadsTab";
-import ProfileHeader from "@/components/shared/ProfileHeader";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import UserCard from "@/components/socialApp/cards/UserCard";
+import ThreadsTab from "@/components/socialApp/shared/ThreadsTab";
+import ProfileHeader from "@/components/socialApp/shared/ProfileHeader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/social-app-ui/tabs";
 
 import { fetchCommunityDetails } from "@/lib/actions/community.actions";
 

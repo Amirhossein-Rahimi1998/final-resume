@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 import { fetchUser } from "@/lib/actions/user.actions";
@@ -9,7 +9,7 @@ async function Page() {
   if (!user) return null; // to avoid typescript warnings
 
   const userInfo = await fetchUser(user.id);
-  if (userInfo?.onboarded) redirect("/");
+  if (userInfo?.onboarded) redirect("/introduction-projects/social-app");
 
   const userData = {
     id: user.id,
@@ -24,7 +24,7 @@ async function Page() {
     <main className='mx-auto flex max-w-3xl flex-col justify-start px-10 py-20'>
       <h1 className='text-heading2-bold text-light-1'>Onboarding</h1>
       <p className='mt-3 text-base-regular text-light-2'>
-        Complete your profile now, to use Threds.
+        Complete your profile now, to use Threads.
       </p>
 
       <section className='mt-9 bg-dark-2 p-10'>
