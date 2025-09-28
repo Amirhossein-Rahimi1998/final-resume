@@ -78,7 +78,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
         if (pathname === "/profile/edit") {
             router.back();
         } else {
-            router.push("/introduction-projects/social-app/onboarding");
+            // استفاده از replace برای جلوگیری از بازگشت مجدد به onboarding
+            router.replace("/introduction-projects/social-app");
+            router.refresh(); // رفرش صفحه اصلی برای دریافت داده جدید
         }
     };
 

@@ -54,6 +54,10 @@ export async function updateUser({
     if (path === "/profile/edit") {
       revalidatePath(path);
     }
+    // اگر کاربر در مسیر آنبوردینگ یا مسیر اصلی بود، مسیر اصلی را invalidate کن
+    if (path === "/introduction-projects/social-app/onboarding" || path === "/introduction-projects/social-app") {
+      revalidatePath("/introduction-projects/social-app");
+    }
   } catch (error: any) {
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
