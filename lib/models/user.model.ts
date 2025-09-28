@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema(
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
       default: [],
     },
+    communities: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Community" }],
+      default: [],
+    },
   },
   { timestamps: true }
 );

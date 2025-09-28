@@ -26,6 +26,7 @@ export default function RootLayout({
       appearance={{
         baseTheme: dark,
       }}
+      signInFallbackRedirectUrl="/introduction-projects/social-app"
     >
       <html lang='en'>
         <body className={inter.className}>

@@ -6,7 +6,6 @@ import { dark } from "@clerk/themes";
 
 // import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Auth",
@@ -24,11 +23,8 @@ export default function RootLayout({
                 baseTheme: dark,
             }}
         >
-            {/* <html lang='en'>
-                <body className={`${inter.className} bg-dark-1`}>{children}</body>
-            </html> */}
-            <html lang="en">
-                <body className={`${inter.className} antialiased`}>
+            <html lang="en" suppressContentEditableWarning>
+                <body className=" antialiased">
                     <header className="flex justify-end items-center p-4 gap-4 h-16">
                         <SignedOut>
                             <SignInButton />

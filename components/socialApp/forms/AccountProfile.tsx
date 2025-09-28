@@ -78,7 +78,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
         if (pathname === "/profile/edit") {
             router.back();
         } else {
-            router.push("/");
+            router.push("/introduction-projects/social-app/onboarding");
         }
     };
 
@@ -128,7 +128,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     />
                                 ) : (
                                     <Image
-                                        src='/threads-/assets/profile.svg'
+                                        src='/threads-assets/profile.svg'
                                         alt='profile_icon'
                                         width={24}
                                         height={24}
