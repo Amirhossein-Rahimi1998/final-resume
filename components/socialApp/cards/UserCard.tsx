@@ -40,7 +40,7 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
                 className='flex flex-1 items-start justify-start gap-3 xs:items-center'
                 onClick={() => {
                     if (isCommunity) {
-                        router.push(`/communities/${id}`);
+                        router.push(`/introduction-projects/social-app/communities/${id}`);
                     } else {
                         router.push(`/profile/${id}`);
                     }

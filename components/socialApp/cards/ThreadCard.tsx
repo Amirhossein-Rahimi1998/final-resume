@@ -145,7 +145,7 @@ function ThreadCard({
 
             {!isComment && community && (
                 <Link
-                    href={`/communities/${community.id}`}
+                    href={`/introduction-projects/social-app/communities/${community.id}`}
                     className='mt-5 flex items-center'
                 >
                     <p className='text-subtle-medium text-gray-1'>
