@@ -20,7 +20,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
             <div className='flex flex-wrap items-center gap-3'>
                 <Link href={`/introduction-projects/social-app/communities/${id}`} className='relative h-12 w-12'>
                     <Image
-                        src={imgUrl}
+                        src={imgUrl || '/profile.svg'}
                         alt='community_logo'
                         fill
                         className='rounded-full object-cover'
@@ -48,13 +48,12 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
                     <div className='flex items-center'>
                         {members.map((member, index) => (
                             <Image
-                                key={index}
-                                src={member.image}
+                                key={member.image || index}
+                                src={member.image || '/profile.svg'}
                                 alt={`user_${index}`}
                                 width={28}
                                 height={28}
-                                className={`${index !== 0 && "-ml-2"
-                                    } rounded-full object-cover`}
+                                className={`${index !== 0 && "-ml-2"} rounded-full object-cover`}
                             />
                         ))}
                         {members.length > 3 && (

@@ -49,7 +49,7 @@ function ThreadCard({
                     <div className='flex flex-col items-center'>
                         <Link href={`/profile/${author.id}`} className='relative h-11 w-11'>
                             <Image
-                                src={author.image}
+                                src={author.image || '/profile.svg'}
                                 alt='user_community_image'
                                 fill
                                 className='cursor-pointer rounded-full'
@@ -60,7 +60,7 @@ function ThreadCard({
                     </div>
 
                     <div className='flex w-full flex-col'>
-                        <Link href={`/profile/${author.id}`} className='w-fit'>
+                        <Link href={`/introduction-projects/social-app/profile/${author.id}`} className='w-fit'>
                             <h4 className='cursor-pointer text-base-semibold text-light-1'>
                                 {author.name}
                             </h4>
@@ -126,8 +126,8 @@ function ThreadCard({
                 <div className='ml-1 mt-3 flex items-center gap-2'>
                     {comments.slice(0, 2).map((comment, index) => (
                         <Image
-                            key={index}
-                            src={comment.author.image}
+                            key={comment.author?.image || index}
+                            src={comment.author?.image || '/profile.svg'}
                             alt={`user_${index}`}
                             width={24}
                             height={24}
@@ -154,7 +154,7 @@ function ThreadCard({
                     </p>
 
                     <Image
-                        src={community.image}
+                        src={community.image || '/profile.svg'}
                         alt={community.name}
                         width={14}
                         height={14}

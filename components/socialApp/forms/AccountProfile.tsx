@@ -75,7 +75,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             image: values.profile_photo,
         });
 
-        if (pathname === "/profile/edit") {
+        if (pathname === "/introduction-projects/social-app/profile/edit") {
             router.back();
         } else {
             // استفاده از replace برای جلوگیری از بازگشت مجدد به onboarding

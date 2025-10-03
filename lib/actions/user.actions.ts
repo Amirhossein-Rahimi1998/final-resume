@@ -51,7 +51,7 @@ export async function updateUser({
       },
       { upsert: true }
     );
-    if (path === "/profile/edit") {
+    if (path === "/introduction-projects/social-app/profile/edit") {
       revalidatePath(path);
     }
     // اگر کاربر در مسیر آنبوردینگ یا مسیر اصلی بود، مسیر اصلی را invalidate کن

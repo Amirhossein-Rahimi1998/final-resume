@@ -7,21 +7,16 @@ import Pagination from "@/components/socialApp/shared/Pagination";
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 
-async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
+async function Home({ searchParams }: { searchParams: any }) {
+  // `searchParams` is async in newer Next.js versions and should be awaited
+  const params = await searchParams;
   const user = await currentUser();
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/introduction-projects/social-app/onboarding");
 
-  const result = await fetchPosts(
-    searchParams.page ? +searchParams.page : 1,
-    30
-  );
+  const result = await fetchPosts(params?.page ? +params.page : 1, 30);
 
   return (
     <>
@@ -51,7 +46,7 @@ async function Home({
 
       <Pagination
         path='/'
-        pageNumber={searchParams?.page ? +searchParams.page : 1}
+        pageNumber={params?.page ? +params.page : 1}
         isNext={result.isNext}
       />
     </>

@@ -10,7 +10,7 @@ import {
     MobileNavToggle,
     MobileNavMenu,
 } from "@/components/ui/ResizableNavbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { navItems } from "@/data";
 
@@ -19,9 +19,19 @@ export function NavbarDemo() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [show, setShow] = useState(true)
 
-    window.addEventListener("scroll", () => {
-        window.scrollY < 100 ? (setShow(true)) : (setShow(false));
-    })
+    // Attach the scroll listener only on the client and inside a React effect.
+    // This avoids "window is not defined" during SSR and ensures the listener is
+    // cleaned up when the component unmounts.
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const onScroll = () => {
+            setShow(window.scrollY < 100);
+        };
+        // set initial state based on current scroll position
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     return (
         <div className="relative w-full z-100">
