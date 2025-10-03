@@ -15,12 +15,18 @@ function Searchbar({ routeType }: Props) {
     const [search, setSearch] = useState("");
 
     // query after 0.3s of no input
+
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
+            // اگر routeType با / شروع می‌شود، همان را استفاده کن، وگرنه مسیر کامل بساز
+            let basePath = routeType.startsWith("/") ? routeType : `/introduction-projects/social-app/${routeType}`;
+            if (!basePath.startsWith("/introduction-projects/social-app/")) {
+                basePath = `/introduction-projects/social-app${basePath}`;
+            }
             if (search) {
-                router.push(`/${routeType}?q=` + search);
+                router.push(`${basePath}?q=${encodeURIComponent(search)}`);
             } else {
-                router.push(`/${routeType}`);
+                router.push(basePath);
             }
         }, 300);
 

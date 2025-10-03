@@ -29,7 +29,7 @@ async function RightSidebar() {
                         <>
                             {suggestedCOmmunities.communities.map((community) => (
                                 <UserCard
-                                    key={community.id}
+                                    key={community.id || community._id}
                                     id={community.id}
                                     name={community.name}
                                     username={community.username}

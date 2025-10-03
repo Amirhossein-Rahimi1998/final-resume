@@ -1,4 +1,26 @@
 "use server";
+// دریافت کاربر بر اساس _id یا clerkId (برای صفحه پروفایل)
+import mongoose from "mongoose";
+export async function fetchUserById(id: string) {
+  try {
+    await connectToDB();
+    // اگر id یک ObjectId معتبر نبود، فرض کن clerkId است و با آن جستجو کن
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      // استفاده از همان منطق fetchUser
+      return await User.findOne({ clerkId: id }).populate({
+        path: "communities",
+        model: Community,
+      });
+    }
+    // در غیر این صورت با _id جستجو کن
+    return await User.findById(id).populate({
+      path: "communities",
+      model: Community,
+    });
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user by id: ${error.message}`);
+  }
+}
 
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
@@ -47,6 +69,7 @@ export async function updateUser({
         firstName: name.split(" ")[0] || "",
         lastName: name.split(" ")[1] || "",
         avatar: image,
+        bio: bio || "",
         onboarded: true,
       },
       { upsert: true }
@@ -55,7 +78,10 @@ export async function updateUser({
       revalidatePath(path);
     }
     // اگر کاربر در مسیر آنبوردینگ یا مسیر اصلی بود، مسیر اصلی را invalidate کن
-    if (path === "/introduction-projects/social-app/onboarding" || path === "/introduction-projects/social-app") {
+    if (
+      path === "/introduction-projects/social-app/onboarding" ||
+      path === "/introduction-projects/social-app"
+    ) {
       revalidatePath("/introduction-projects/social-app");
     }
   } catch (error: any) {
@@ -146,7 +172,7 @@ export async function fetchUsers({
 
 export async function getActivity(userId: string) {
   try {
-  await connectToDB();
+    await connectToDB();
 
     // Find all threads created by the user
     const userThreads = await Thread.find({ author: userId });

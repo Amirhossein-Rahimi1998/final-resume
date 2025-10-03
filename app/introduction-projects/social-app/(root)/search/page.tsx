@@ -7,11 +7,10 @@ import Pagination from "@/components/socialApp/shared/Pagination";
 
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 
-async function Page({
-    searchParams,
-}: {
-    searchParams: { [key: string]: string | undefined };
-}) {
+
+async function Page({ searchParams }: { searchParams: any }) {
+    // Next.js 14: searchParams باید await شود
+    const params = await searchParams;
     const user = await currentUser();
     if (!user) return null;
 
@@ -20,8 +19,8 @@ async function Page({
 
     const result = await fetchUsers({
         userId: user.id,
-        searchString: searchParams.q,
-        pageNumber: searchParams?.page ? +searchParams.page : 1,
+        searchString: params.q,
+        pageNumber: params?.page ? +params.page : 1,
         pageSize: 25,
     });
 
@@ -52,7 +51,7 @@ async function Page({
 
             <Pagination
                 path='search'
-                pageNumber={searchParams?.page ? +searchParams.page : 1}
+                pageNumber={params?.page ? +params.page : 1}
                 isNext={result.isNext}
             />
         </section>

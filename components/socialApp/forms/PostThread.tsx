@@ -46,7 +46,7 @@ function PostThread({ userId }: Props) {
             path: pathname,
         });
 
-        router.push("/");
+    router.push("/introduction-projects/social-app");
     };
 
     return (
@@ -71,7 +71,7 @@ function PostThread({ userId }: Props) {
                     )}
                 />
 
-                <Button type='submit' className='bg-primary-500'>
+                <Button type='submit' className='bg-primary-500 cursor-pointer'>
                     Post Thread
                 </Button>
             </form>

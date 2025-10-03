@@ -39,7 +39,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
 
             <div className='mt-5 flex flex-wrap items-center justify-between gap-3'>
                 <Link href={`/introduction-projects/social-app/communities/${id}`}>
-                    <Button size='sm' className='rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important'>
+                    <Button size='sm' className='rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important cursor-pointer'>
                         View
                     </Button>
                 </Link>

@@ -13,6 +13,8 @@ async function Page({
 }: {
     searchParams: { [key: string]: string | undefined };
 }) {
+    // Next.js 14: searchParams باید await شود
+    const params = await searchParams;
     const user = await currentUser();
     if (!user) return null;
 
@@ -20,8 +22,8 @@ async function Page({
     if (!userInfo?.onboarded) redirect("/introduction-projects/social-app/onboarding");
 
     const result = await fetchCommunities({
-        searchString: searchParams.q,
-        pageNumber: searchParams?.page ? +searchParams.page : 1,
+        searchString: params.q,
+        pageNumber: params?.page ? +params.page : 1,
         pageSize: 25,
     });
 
@@ -40,7 +42,7 @@ async function Page({
                     <>
                         {result.communities.map((community) => (
                             <CommunityCard
-                                key={community.id}
+                                key={community.id || community._id}
                                 id={community.id}
                                 name={community.name}
                                 username={community.username}
@@ -55,7 +57,7 @@ async function Page({
 
             <Pagination
                 path='communities'
-                pageNumber={searchParams?.page ? +searchParams.page : 1}
+                pageNumber={params?.page ? +params.page : 1}
                 isNext={result.isNext}
             />
         </>

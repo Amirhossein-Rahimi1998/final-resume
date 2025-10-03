@@ -9,24 +9,39 @@ import ProfileHeader from "@/components/socialApp/shared/ProfileHeader";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/social-app-ui/tabs";
 
-import { fetchUser } from "@/lib/actions/user.actions";
+import { fetchUserById } from "@/lib/actions/user.actions";
 
 async function Page({ params }: { params: { id: string } }) {
-    const user = await currentUser();
-    if (!user) return null;
 
-    const userInfo = await fetchUser(params.id);
-    if (!userInfo?.onboarded) redirect("/introduction-projects/social-app/onboarding");
+
+    // Next.js 14: params باید await شود
+    const awaitedParams = await params;
+    const user = await currentUser();
+    if (!user) {
+        redirect("/introduction-projects/social-app/sign-in");
+    }
+
+    const userInfo = await fetchUserById(awaitedParams.id);
+
+    // اگر کاربر پیدا نشد یا آنبورد نشده بود، و کاربر فعلی همان کاربر پروفایل است، به آنبوردینگ ریدایرکت کن
+    if (!userInfo || !userInfo.onboarded) {
+        if (user.id === awaitedParams.id) {
+            redirect("/introduction-projects/social-app/onboarding");
+        } else {
+            // اگر کاربر دیگر پیدا نشد، می‌توان صفحه 404 یا پیام مناسب نمایش داد
+            return <div className="text-light-1 p-8">User not found or not onboarded.</div>;
+        }
+    }
 
     return (
         <section>
             <ProfileHeader
-                accountId={userInfo.id}
+                accountId={userInfo._id?.toString?.() || userInfo.id}
                 authUserId={user.id}
-                name={userInfo.name}
+                name={`${userInfo.firstName || ""} ${userInfo.lastName || ""}`.trim()}
                 username={userInfo.username}
-                imgUrl={userInfo.image}
-                bio={userInfo.bio}
+                imgUrl={userInfo.avatar}
+                bio={userInfo.bio || ""}
             />
 
             <div className='mt-9'>
@@ -45,7 +60,7 @@ async function Page({ params }: { params: { id: string } }) {
 
                                 {tab.label === "Threads" && (
                                     <p className='ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2'>
-                                        {userInfo.threads.length}
+                                        {Array.isArray(userInfo.threads) ? userInfo.threads.length : 0}
                                     </p>
                                 )}
                             </TabsTrigger>
@@ -60,7 +75,7 @@ async function Page({ params }: { params: { id: string } }) {
                             {/* @ts-ignore */}
                             <ThreadsTab
                                 currentUserId={user.id}
-                                accountId={userInfo.id}
+                                accountId={userInfo._id?.toString?.() || userInfo.id}
                                 accountType='User'
                             />
                         </TabsContent>
