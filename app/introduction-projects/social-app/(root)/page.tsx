@@ -1,4 +1,5 @@
 import { currentUser } from "@clerk/nextjs/server";
+import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import ThreadCard from "@/components/socialApp/cards/ThreadCard";
@@ -11,7 +12,15 @@ async function Home({ searchParams }: { searchParams: any }) {
   // `searchParams` is async in newer Next.js versions and should be awaited
   const params = await searchParams;
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) return (
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+      <h1 className="text-3xl font-bold">شبکه اجتماعی پیشرفته</h1>
+      <div className="flex gap-4 my-8">
+        <SignInButton redirectUrl="/introduction-projects/social-app" />
+        <SignUpButton redirectUrl="/introduction-projects/social-app" />
+      </div>
+    </div>
+  );
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/introduction-projects/social-app/onboarding");

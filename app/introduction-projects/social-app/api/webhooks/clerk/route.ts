@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { clerkClient } from "@clerk/nextjs/server";
-import { createOrUpdateUser, deleteUser } from "@/lib/actions/user";
+import { updateUser } from "@/lib/actions/user.actions";
 
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
@@ -60,14 +60,14 @@ export async function POST(req) {
     const { id, first_name, last_name, image_url, email_addresses, username } =
       evt?.data;
     try {
-      const user = await createOrUpdateUser(
-        id,
-        first_name,
-        last_name,
-        image_url,
-        email_addresses,
-        username
-      );
+      const user = await updateUser({
+        userId: id,
+        username: username || email_addresses?.[0]?.email_address.split("@")[0] || "",
+        name: [first_name, last_name].filter(Boolean).join(" "),
+        bio: "", // در clrek bio نداریم، اگر داشتی اضافه کن
+        image: image_url,
+        path: "/introduction-projects/social-app/profile/edit" // یا مسیر متناسب با فرایند
+      });
       if (user && eventType === "user.created") {
         try {
           await clerkClient.users.updateUserMetadata(id, {
@@ -90,7 +90,9 @@ export async function POST(req) {
   if (eventType === "user.deleted") {
     const { id } = evt?.data;
     try {
-      await deleteUser(id);
+      await import("@/lib/actions/user.actions").then(m=>
+        m.deleteUser ? m.deleteUser(id) : Promise.resolve()
+      );
     } catch (error) {
       console.log("Error deleting user:", error);
       return new Response("Error occured", {

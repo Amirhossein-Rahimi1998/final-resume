@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { ThemeProvider } from "next-themes";
 
 import LeftSidebar from "@/components/socialApp/shared/LeftSidebar";
 import Bottombar from "@/components/socialApp/shared/Bottombar";
@@ -27,9 +28,12 @@ export default function RootLayout({
         baseTheme: dark,
       }}
       signInFallbackRedirectUrl="/introduction-projects/social-app"
+      signUpFallbackRedirectUrl="/introduction-projects/social-app"
+      afterSignInUrl="/introduction-projects/social-app"
+      afterSignUpUrl="/introduction-projects/social-app"
     >
-      <html lang='en'>
-        <body className={inter.className}>
+      <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+        <div className={inter.className}>
           <Topbar />
 
           <main className='flex flex-row'>
@@ -42,8 +46,8 @@ export default function RootLayout({
           </main>
 
           <Bottombar />
-        </body>
-      </html>
+        </div>
+      </ThemeProvider>
     </ClerkProvider>
   );
 }

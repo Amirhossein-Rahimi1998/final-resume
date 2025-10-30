@@ -198,3 +198,13 @@ export async function getActivity(userId: string) {
     throw error;
   }
 }
+
+// حذف کاربر بر اساس clerkId
+export async function deleteUser(userId: string) {
+  try {
+    await connectToDB();
+    await User.findOneAndDelete({ clerkId: userId });
+  } catch (error) {
+    throw new Error('Failed to delete user: ' + error?.message);
+  }
+}

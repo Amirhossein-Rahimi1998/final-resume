@@ -267,6 +267,7 @@ export const NavbarButton = ({
         | React.ComponentPropsWithoutRef<"a">
         | React.ComponentPropsWithoutRef<"button">
     )) => {
+    const { redirectUrl, ...rest } = props;
     const baseStyles =
         "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
@@ -283,7 +284,7 @@ export const NavbarButton = ({
         <Tag
             href={href || undefined}
             className={cn(baseStyles, variantStyles[variant], className)}
-            {...props}
+            {...rest}
         >
             {children}
         </Tag>

@@ -13,6 +13,7 @@ import {
 import { useState, useEffect } from "react";
 
 import { navItems } from "@/data";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export function NavbarDemo() {
 
@@ -43,7 +44,14 @@ export function NavbarDemo() {
                     {show ? (
 
                         <div className="flex items-center gap-4">
-                            <NavbarButton variant="secondary">Login</NavbarButton>
+                            <SignedOut>
+                              <SignInButton>
+                                <NavbarButton variant="secondary">Login</NavbarButton>
+                              </SignInButton>
+                            </SignedOut>
+                            <SignedIn>
+                              <UserButton afterSignOutUrl="/"/>
+                            </SignedIn>
                             <NavbarButton variant="primary">Book a call</NavbarButton>
                         </div>
                     ) : null}
